@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DACN.Models.BenhAn>
+@{
+    ViewBag.Title = "BenhAn";
+    Layout = "~/Views/Shared/Home_Layout.cshtml";
+}
+<h1 class="mt-5 mb-5 wow fadeInUp" style="text-align:center">Hồ Sơ Bệnh Án</h1>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th style="text-align:center">Ảnh Đại Diện</th>
+            <th>Tên Bác Sĩ</th>
+            <th>Ngày Khám</th>
+            <th>Nội Dung</th>
+            <th>Chức Năng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center">
+                    <img src="~/Content/HinhAnh/AvtBS/@item.BacSi.HinhAnh" style="width: 120px; height: 50%" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BacSi.HoVaTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayKham)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoiDung)
+                </td>
+                <td>
+                    <button class="btn btn-primary wow zoomIn ml-3">
+                        @Html.ActionLink("Xem chi tiết", "ChiTietBA", new { id = item.MaBenhAn }, new { @style = "color:white;" })
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <thead>
+        <tr>
+            <th style="text-align:center">Ảnh Đại Diện</th>
+            <th>Tên Bác Sĩ</th>
+            <th>Ngày Khám</th>
+            <th>Nội Dung</th>
+            <th>Chức Năng</th>
+        </tr>
+    </thead>
+</table>
+
